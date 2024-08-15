@@ -1,0 +1,70 @@
+Model: "model"
+__________________________________________________________________________________________________
+ Layer (type)                Output Shape                 Param #   Connected to                  
+==================================================================================================
+ input_1 (InputLayer)        [(None, 3, 7)]               0         []                            
+                                                                                                  
+ multi_head_attention (Mult  (None, 3, 7)                 2859      ['input_1[0][0]',             
+ iHeadAttention)                                                     'input_1[0][0]']             
+                                                                                                  
+ dropout (Dropout)           (None, 3, 7)                 0         ['multi_head_attention[0][0]']
+                                                                                                  
+ layer_normalization (Layer  (None, 3, 7)                 14        ['dropout[0][0]']             
+ Normalization)                                                                                   
+                                                                                                  
+ tf.__operators__.add (TFOp  (None, 3, 7)                 0         ['layer_normalization[0][0]', 
+ Lambda)                                                             'input_1[0][0]']             
+                                                                                                  
+ dense (Dense)               (None, 3, 7)                 56        ['tf.__operators__.add[0][0]']
+                                                                                                  
+ dropout_1 (Dropout)         (None, 3, 7)                 0         ['dense[0][0]']               
+                                                                                                  
+ dense_1 (Dense)             (None, 3, 7)                 56        ['dropout_1[0][0]']           
+                                                                                                  
+ layer_normalization_1 (Lay  (None, 3, 7)                 14        ['dense_1[0][0]']             
+ erNormalization)                                                                                 
+                                                                                                  
+ tf.__operators__.add_1 (TF  (None, 3, 7)                 0         ['layer_normalization_1[0][0]'
+ OpLambda)                                                          , 'tf.__operators__.add[0][0]'
+                                                                    ]                             
+                                                                                                  
+ multi_head_attention_1 (Mu  (None, 3, 7)                 2859      ['tf.__operators__.add_1[0][0]
+ ltiHeadAttention)                                                  ',                            
+                                                                     'tf.__operators__.add_1[0][0]
+                                                                    ']                            
+                                                                                                  
+ dropout_2 (Dropout)         (None, 3, 7)                 0         ['multi_head_attention_1[0][0]
+                                                                    ']                            
+                                                                                                  
+ layer_normalization_2 (Lay  (None, 3, 7)                 14        ['dropout_2[0][0]']           
+ erNormalization)                                                                                 
+                                                                                                  
+ tf.__operators__.add_2 (TF  (None, 3, 7)                 0         ['layer_normalization_2[0][0]'
+ OpLambda)                                                          , 'tf.__operators__.add_1[0][0
+                                                                    ]']                           
+                                                                                                  
+ dense_2 (Dense)             (None, 3, 7)                 56        ['tf.__operators__.add_2[0][0]
+                                                                    ']                            
+                                                                                                  
+ dropout_3 (Dropout)         (None, 3, 7)                 0         ['dense_2[0][0]']             
+                                                                                                  
+ dense_3 (Dense)             (None, 3, 7)                 56        ['dropout_3[0][0]']           
+                                                                                                  
+ layer_normalization_3 (Lay  (None, 3, 7)                 14        ['dense_3[0][0]']             
+ erNormalization)                                                                                 
+                                                                                                  
+ tf.__operators__.add_3 (TF  (None, 3, 7)                 0         ['layer_normalization_3[0][0]'
+ OpLambda)                                                          , 'tf.__operators__.add_2[0][0
+                                                                    ]']                           
+                                                                                                  
+ global_average_pooling1d (  (None, 7)                    0         ['tf.__operators__.add_3[0][0]
+ GlobalAveragePooling1D)                                            ']                            
+                                                                                                  
+ dense_4 (Dense)             (None, 1)                    8         ['global_average_pooling1d[0][
+                                                                    0]']                          
+                                                                                                  
+==================================================================================================
+Total params: 6006 (23.46 KB)
+Trainable params: 6006 (23.46 KB)
+Non-trainable params: 0 (0.00 Byte)
+__________________________________________________________________________________________________
